@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -38,16 +39,19 @@ public class Item {
         this.value = value;
     }
 
-    
     public void input() {
-        boolean loop = true;
         Scanner sc = new Scanner(System.in);
-    }  
-    
-    
+        System.out.print("Enter value: ");
+        this.value = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter creator: ");
+        this.creator = sc.nextLine();
+
+    }
     public void output() {
         System.out.println("Value: " + this.value);
-        System.out.println("Creator" + this.creator);
+        System.out.println("Creator: " + this.creator);
     }
     
 }

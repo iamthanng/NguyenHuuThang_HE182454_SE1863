@@ -4,6 +4,9 @@
  */
 package DTO;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author macbook
@@ -36,11 +39,15 @@ public class Statue extends Item{
         this.colour = colour;
     }
 
-    public void outputStatue() {
-        
+    public void inputStatue() {
+        super.input();
+        Scanner sc = new Scanner(System.in);
+
     }
     
-    public void inputStatue() {
-        
+    public void outputStatue() {
+        super.output();
+        System.out.println("Weight: " + this.weight);
+        System.out.println("Colour: " + this.colour);
     }
 }

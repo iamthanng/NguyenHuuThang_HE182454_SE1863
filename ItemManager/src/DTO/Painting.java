@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -59,21 +60,26 @@ public class Painting extends Item {
         this.isFramed = isFramed;
     }
     
+    public void inputPainting() {
+        super.input();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter height: ");
+        this.height = sc.nextInt();
+        System.out.print("Enter width: ");
+        this.width = sc.nextInt();
+        System.out.print("Enter isWatercolour: ");
+        this.isWatercolour = sc.nextBoolean();
+        System.out.print("Enter isFramed: ");
+        this.isFramed = sc.nextBoolean();
+        
+    }        
+    
     public void outputPainting() {
+        super.output();
         System.out.println("Height: " + this.height);
         System.out.println("Width: " + this.width);
         System.out.println("isWatercolour: " + this.isWatercolour);
         System.out.println("isFramed: " + this.isFramed);
     }
-    
-    public void inputPainting() {
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Enter Height: ");
-        this.height = sc.nextInt();
-        
-        System.out.println("Enter Width: ");
-        this.width = sc.nextInt();
-        
-    }
 }
+

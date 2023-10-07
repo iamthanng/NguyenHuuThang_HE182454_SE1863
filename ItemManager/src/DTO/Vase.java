@@ -4,6 +4,9 @@
  */
 package DTO;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author macbook
@@ -36,15 +39,21 @@ public class Vase extends Item {
         this.material = material;
     }
     
-    public void outputVase() {
-        output();
-        System.out.println("Height: " + this.height);
-        System.out.println("Material " + this.material);
+        
+    public void inputVase() { 
+        super.input();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter height: ");
+        this.height = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter material: ");
+        this.material = sc.nextLine();
     }
     
-    public void inputVase() {
-        input();
-        
-        
+    public void outputVase() {
+        super.output();
+        System.out.println("Height: " + this.height);
+        System.out.println("Material: " + this.material);
     }
+
 }

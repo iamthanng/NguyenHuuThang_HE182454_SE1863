@@ -20,11 +20,11 @@ public class AntiqueShop {
         int choice = 0;
         Scanner sc = new Scanner(System.in);
         do{
-            System.out.println("1. Create a Vase:");
-            System.out.println("2. Create a State:");
-            System.out.println("3. Create a Painting:");
-            System.out.println("4. Display the Item:");
-            System.out.println("Input a choice:");
+            System.out.println("1. Create a Vase");
+            System.out.println("2. Create a State");
+            System.out.println("3. Create a Painting");
+            System.out.println("4. Display the Item");
+            System.out.print("Input a choice: ");
             choice=sc.nextInt();
             switch(choice) {
                 case 1:
