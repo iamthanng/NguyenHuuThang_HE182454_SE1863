@@ -9,26 +9,19 @@ package model;
  *
  * @author ADMIN
  */
-public class Student {
-     private String id, studentName, courseName;
-    private int semester;
+public class Report {
 
-    public Student() {
+    private String studentName;
+    private String courseName;
+    private int totalCourse;
+
+    public Report() {
     }
 
-    public Student(String id, String studentName, String courseName, int semester) {
-        this.id = id;
+    public Report(String studentName, String courseName, int totalCourse) {
         this.studentName = studentName;
         this.courseName = courseName;
-        this.semester = semester;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.totalCourse = totalCourse;
     }
 
     public String getStudentName() {
@@ -47,11 +40,16 @@ public class Student {
         this.courseName = courseName;
     }
 
-    public int getSemester() {
-        return semester;
+    public int getTotalCourse() {
+        return totalCourse;
     }
 
-    public void setSemester(int semester) {
-        this.semester = semester;
+    public void setTotalCourse(int totalCourse) {
+        this.totalCourse = totalCourse;
+    }
+
+    
+    public void displayReport() {
+        System.out.printf("%-20s%-15s%-15s\n", studentName, courseName, totalCourse);
     }
 }

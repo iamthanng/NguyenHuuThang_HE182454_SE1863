@@ -11,7 +11,7 @@ import controller.UserInput;
  *
  * @author ADMIN
  */
-public class Validation {
+public class validation {
     //Check số nằm trong khoảng
     public int getChoice(String msg, int min, int max) {
         while (true) {

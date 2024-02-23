@@ -5,8 +5,7 @@
  */
 package view;
 
-
-import util.Validation;
+import util.validation;
 
 /**
  *
@@ -20,7 +19,7 @@ public class UserView {
         System.out.println("3. Update/Delete");
         System.out.println("4. Report");
         System.out.println("5. Exit");
-        Validation validation = new Validation();
+        validation validation = new validation();
         int choice = validation.getChoice("Enter your choice: ", 1, 5);
         return choice;
     }

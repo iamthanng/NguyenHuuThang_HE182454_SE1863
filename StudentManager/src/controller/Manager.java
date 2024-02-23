@@ -7,8 +7,9 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import model.Report;
 import model.Student;
-import util.Validation;
+import util.validation;
 
 /**
  *
@@ -16,14 +17,15 @@ import util.Validation;
  */
 public class Manager {
 
-    Validation validation = new Validation();
+    validation validation = new validation();
+    ArrayList<Student> listS = new ArrayList<>();
 
     public void createStudent(ArrayList<Student> listS) {
         String id, studentName = "", courseName;
         int semester;
         while (true) {
-            if (listS.size() >= 10) {
-                if (!validation.checkInputYN("Do you want to continue?")) {
+            if (listS.size() >= 2) {
+                if (!validation.checkInputYN("Do you want to continue? ")) {
                     displayStudent(listS);
                     return;
                 }
@@ -100,12 +102,12 @@ public class Manager {
                 System.out.println("======== UPDATING ========");
                 //Chon student muon update
                 searchIndex = validation.getChoice("Enter number of student you want to update [1-" + listById.size() + "]: ", 1, listById.size());
-                Student sUpdate = listById.get(searchIndex - 1);
+                Student student = listById.get(searchIndex - 1);
                 idUpdate = validation.checkInputString("Enter ID to update: ", "^[A-Za-z]{2}[0-9]{6}+$");
                 //Kiem tra da co ID chua
-                Student student = getStudentById(listS, idUpdate);
+                Student sUpdate = getStudentById(listS, idUpdate);
                 //ID ton tai dung lai ten
-                if (student != null) {
+                if (sUpdate != null) {
                     System.out.println("Student with id " + idUpdate + " existed");
                     student.setStudentName(sUpdate.getStudentName());
                 } else {
@@ -136,11 +138,46 @@ public class Manager {
 
     }
 
+    public void report(ArrayList<Student> listS) {
+        String name, courseName;
+        int totalCourse;
+        ArrayList<Student> searchList = new ArrayList<>();
+        ArrayList<Report> reportList = new ArrayList<>();
+        if (listS.isEmpty()) {
+            System.err.println("List is empty, must create student");
+            return;
+        }
+        System.out.printf("%-20s%-15s%-15s\n", "studentName", "Course", "Total Course");
+        //Tao array tam
+        for(Student student : listS){
+            searchList.add(student);            
+        }
+        //So sanh 2 array
+        for(Student student : listS){
+            name = student.getCourseName();
+            courseName = student.getCourseName();
+            totalCourse = 0;
+            for(int i = 0; i < searchList.size(); i++){
+                if(searchList.get(i).getStudentName().equalsIgnoreCase(name) && searchList.get(i).getCourseName().equalsIgnoreCase(courseName)) {
+                    totalCourse++;
+                    searchList.remove(i);
+                    i--;
+                }
+            }
+            reportList.add(new Report(name, courseName, totalCourse));
+        }
+        for(Report report : reportList){
+            report.displayReport();
+        }               
+    }
+
     //Hiển thị danh sách sinh viên
     public void displayStudent(ArrayList<Student> listS) {
+        System.out.printf("%-20s%-20s%-15s%-15s\n", "ID", "Name", "Course", "Semester");
         for (Student s : listS) {
-            System.out.println("ID: " + s.getId() + " - Name: " + s.getStudentName() + " - Course: " + s.getCourseName() + " - Semester: " + s.getSemester());
-//            System.out.printf("%-20s%-20s%-15s%-15s\n", s.getId(), s.getStudentName(), s.getCourseName(), s.getSemester());
+//            System.out.println("ID: " + s.getId() + " - Name: " + s.getStudentName() + " - Course: " + s.getCourseName() + " - Semester: " + s.getSemester());
+
+            System.out.printf("%-20s%-20s%-15s%-15s\n", s.getId(), s.getStudentName(), s.getCourseName(), s.getSemester());
         }
     }
 

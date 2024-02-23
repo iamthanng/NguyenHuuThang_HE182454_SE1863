@@ -15,11 +15,6 @@ import view.UserView;
  * @author ADMIN
  */
 public class Main {
-
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         ArrayList<Student> listS = new ArrayList<>();
         Manager manager = new Manager();
@@ -37,7 +32,7 @@ public class Main {
                     manager.updateAndDelete(listS);
                     break;
                 case 4:
-
+                    manager.report();
                     break;
                 case 5:
                     return;

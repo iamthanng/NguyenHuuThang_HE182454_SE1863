@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author ADMIN
  */
 public class UserInput {
+    
     public static int getInt(){
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
